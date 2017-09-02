@@ -1,6 +1,5 @@
 import requests
 import xmltodict
-import cached_property
 import time
 import sys
 
