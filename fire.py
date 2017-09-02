@@ -6,6 +6,6 @@ app = Flask(__name__)
 def index():
     return render_template('isfire.html', **get_fire_dict())
 
-@app.route('/where')
-def where():
+@app.route('/', subdomain='where')
+def where_index():
     return render_template('wherefire.html', **get_fire_dict())
