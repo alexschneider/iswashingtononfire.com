@@ -30,5 +30,4 @@ def get_fire_dict():
     if updated + CACHE_LIFETIME_IN_SECONDS < current_time:
         current_fires = _get_fire_dict()
         updated = current_time
-        print("updated", updated, file=sys.stderr)
     return current_fires

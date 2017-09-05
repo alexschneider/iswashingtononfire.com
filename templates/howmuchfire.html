@@ -1,0 +1,58 @@
+<!doctype html>
+<head>
+    <title>Where Is Washington On Fire?</title>
+    <style>
+        a:link {
+            color:#000000;
+            text-decoration: none;
+        }
+        a:visited {color:#000000;}
+        a:hover {color:#000000;}
+        a:active {color:#000000;}
+        .h1link::after {
+            content: "\1F517";
+            vertical-align: super;
+            font-size: 30%;
+            position: relative;
+            right: 0px;
+        }
+        .acres {
+            padding: 10px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        {% for fire in fires %}
+            <tr>
+                {% if fire.inciweb_url %}
+                    <td class="tdlink">
+                        <a href="{{fire.inciweb_url}}">
+                            <h1 class="h1link">{{fire.location}}:</h1>
+                        </a>
+                    </td>
+                    <td class="acres">
+                        <h1>{{fire.acres}} acres</h1>
+                    </td>
+                {% else %}
+                    <td>
+                        <h1>{{fire.location}}:</h1>
+                    </td>
+                    <td class="acres">
+                        <h1>{{fire.acres}} acres</h1>
+                    </td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        <tr>
+            <td>
+                <h1>Total:</h1>
+            </td>
+            <td class="acres">
+                <h1>{{totalacres}} acres</h1>
+            </td>
+        </tr>
+    </table>
+    <p>updated: {{date}}</p>
+</body>

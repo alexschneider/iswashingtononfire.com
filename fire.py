@@ -9,6 +9,16 @@ app.config['SERVER_NAME'] = os.environ['SERVER_NAME']
 def index():
     return render_template('isfire.html', **get_fire_dict())
 
+@app.route('/', subdomain='www')
+def www_index():
+    return index()
+
 @app.route('/', subdomain='where')
 def where_index():
     return render_template('wherefire.html', **get_fire_dict())
+
+@app.route('/', subdomain='howmuch')
+def howmuch_index():
+    fire_dict = get_fire_dict()
+    fire_dict['totalacres'] = sum(int(fire['acres']) for fire in fire_dict['fires'])
+    return render_template('howmuchfire.html', **fire_dict)
